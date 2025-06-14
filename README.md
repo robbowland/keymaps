@@ -5,7 +5,7 @@
 </h1>
 
 <h4 align="center">
-<a href="https://www.robbow.land" target="_blank">My</a> keymaps for simplicity, consistency & functionality.
+<a href="https://www.robbow.land" target="_blank">My</a> keymaps for a consistent(ish) experience across keyboards and devices.
 </h4>
 
 <p align="center">
