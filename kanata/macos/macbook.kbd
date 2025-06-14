@@ -1,0 +1,97 @@
+(defcfg
+  process-unmapped-keys yes
+)
+
+;; Default layout for US 14" macbook pro keyboard
+(defsrc
+  esc    f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+  grv     1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab     q    w    e    r    t    y    u    i    o    p    [    ]       \
+  caps    a    s    d    f    g    h    j    k    l    ;    '          ret
+  lshift  z    x    c    v    b    n    m    ,    .    /            rshift
+  fn      lctrl   lalt   lmet        spc        rmet   rctrl
+)
+
+(defvar
+  streak-count 3
+  streak-time 250
+  hold-timeout 200
+)
+
+;; Autoshift
+;; ---------
+;; Tap to send key, hold to send shifted key.
+;;
+;; Makes use of '3timing' to reduce keypress latency when typing for tap-hold-release keys.
+;; See: https://github.com/jtroo/kanata/discussions/1455#discussioncomment-11712363
+(deftemplate autoshift (timeouthold char)
+  (switch
+    ;; fast tap: output char immediately
+    ((key-timing $streak-count less-than $streak-time)) $char break
+    ;; otherwise: treat as hold, send Shift+char
+    () (tap-hold-release 0 $timeouthold $char (multi lsft $char)) break
+  )
+)
+
+;; Autoshift
+(defalias
+  a (t! autoshift $hold-timeout a)
+  b (t! autoshift $hold-timeout b)
+  c (t! autoshift $hold-timeout c)
+  d (t! autoshift $hold-timeout d)
+  e (t! autoshift $hold-timeout e)
+  f (t! autoshift $hold-timeout f)
+  g (t! autoshift $hold-timeout g)
+  h (t! autoshift $hold-timeout h)
+  i (t! autoshift $hold-timeout i)
+  j (t! autoshift $hold-timeout j)
+  k (t! autoshift $hold-timeout k)
+  l (t! autoshift $hold-timeout l)
+  m (t! autoshift $hold-timeout m)
+  n (t! autoshift $hold-timeout n)
+  o (t! autoshift $hold-timeout o)
+  p (t! autoshift $hold-timeout p)
+  q (t! autoshift $hold-timeout q)
+  r (t! autoshift $hold-timeout r)
+  s (t! autoshift $hold-timeout s)
+  t (t! autoshift $hold-timeout t)
+  u (t! autoshift $hold-timeout u)
+  v (t! autoshift $hold-timeout v)
+  w (t! autoshift $hold-timeout w)
+  x (t! autoshift $hold-timeout x)
+  y (t! autoshift $hold-timeout y)
+  z (t! autoshift $hold-timeout z)
+
+  1 (t! autoshift $hold-timeout 1)
+  2 (t! autoshift $hold-timeout 2)
+  3 (t! autoshift $hold-timeout 3)
+  4 (t! autoshift $hold-timeout 4)
+  5 (t! autoshift $hold-timeout 5)
+  6 (t! autoshift $hold-timeout 6)
+  7 (t! autoshift $hold-timeout 7)
+  8 (t! autoshift $hold-timeout 8)
+  9 (t! autoshift $hold-timeout 9)
+  0 (t! autoshift $hold-timeout 0)
+
+  minus       (t! autoshift $hold-timeout -)  ;; _
+  equal       (t! autoshift $hold-timeout =)  ;; +
+  lbracket    (t! autoshift $hold-timeout [)  ;; {
+  rbracket    (t! autoshift $hold-timeout ])  ;; }
+  backslash   (t! autoshift $hold-timeout \)  ;; |
+  semicolon   (t! autoshift $hold-timeout ;)  ;; :
+  quote       (t! autoshift $hold-timeout ')  ;; "
+  comma       (t! autoshift $hold-timeout ,)  ;; <
+  dot         (t! autoshift $hold-timeout .)  ;; >
+  slash       (t! autoshift $hold-timeout /)  ;; ?
+  grave       (t! autoshift $hold-timeout `)  ;; ~
+)
+
+;; Base layer
+(deflayer base
+  esc     🔅   🔆  mctl sls  dtn  dnd  ◀◀    ▶⏸   ▶▶   🔇   🔉   🔊
+  @grave  @1  @2   @3   @4   @5   @6   @7   @8   @9   @0   @minus  @equal  bspc
+  tab     @q  @w   @e   @r   @t   @y   @u   @i   @o   @p   @lbracket  @rbracket  @backslash
+  caps    @a  @s   @d   @f   @g   @h   @j   @k   @l   @semicolon  @quote   ret
+  lshift  @z  @x   @c   @v   @b   @n   @m   @comma  @dot  @slash         rshift
+  fn      lctrl  lalt   lmet       spc      rmet   rctrl
+)
