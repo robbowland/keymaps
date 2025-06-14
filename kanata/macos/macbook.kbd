@@ -86,9 +86,24 @@
   grave       (t! autoshift $hold-timeout `)  ;; ~
 )
 
+;; Layers
+(defalias
+  fn (layer-while-held fn)
+)
+
 ;; Base layer
 (deflayer base
   esc     🔅   🔆  mctl sls  dtn  dnd  ◀◀    ▶⏸   ▶▶   🔇   🔉   🔊
+  @grave  @1  @2   @3   @4   @5   @6   @7   @8   @9   @0   @minus  @equal  bspc
+  tab     @q  @w   @e   @r   @t   @y   @u   @i   @o   @p   @lbracket  @rbracket  @backslash
+  caps    @a  @s   @d   @f   @g   @h   @j   @k   @l   @semicolon  @quote   ret
+  lshift  @z  @x   @c   @v   @b   @n   @m   @comma  @dot  @slash         rshift
+  @fn      lctrl  lalt   lmet       spc      rmet   rctrl
+)
+
+;; Function layer
+(deflayer fn
+  esc     f1  f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
   @grave  @1  @2   @3   @4   @5   @6   @7   @8   @9   @0   @minus  @equal  bspc
   tab     @q  @w   @e   @r   @t   @y   @u   @i   @o   @p   @lbracket  @rbracket  @backslash
   caps    @a  @s   @d   @f   @g   @h   @j   @k   @l   @semicolon  @quote   ret
