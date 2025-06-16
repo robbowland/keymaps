@@ -9,7 +9,7 @@
   tab     q    w    e    r    t    y    u    i    o    p    [    ]       \
   caps    a    s    d    f    g    h    j    k    l    ;    '          ret
   lshift  z    x    c    v    b    n    m    ,    .    /            rshift
-  fn      lctrl   lalt   lmet        spc        rmet   rctrl
+  fn      lctrl   lalt   lmet        spc        rmet   ralt  ◀  ▲  ▼  ▶
 )
 
 (defvar
@@ -18,7 +18,7 @@
   hold-timeout 200
 )
 
-;; Autoshift
+;; autoshift
 ;; ---------
 ;; Tap to send key, hold to send shifted key.
 ;;
@@ -89,24 +89,51 @@
 ;; Layers
 (defalias
   fn (layer-while-held fn)
+  lower (layer-while-held lower)
+  raise (layer-while-held raise)
 )
 
-;; Base layer
+;; Special
+(defalias
+  ;; tap-then-hold for meta, otherwise layer
+  lwr-lmet (tap-dance 200 (@lower lmet))
+  rse-rmet (tap-dance 200 (@raise rmet))
+  ;; tap for space, hold for return
+  spc-ret (tap-hold 0 $hold-timeout spc ret)
+)
+
 (deflayer base
-  esc     🔅   🔆  mctl sls  dtn  dnd  ◀◀    ▶⏸   ▶▶   🔇   🔉   🔊
+  esc     🔅   🔆  mctl sls  dtn  dnd  ◀◀   ▶⏸   ▶▶   🔇   🔉   🔊
   @grave  @1  @2   @3   @4   @5   @6   @7   @8   @9   @0   @minus  @equal  bspc
   tab     @q  @w   @e   @r   @t   @y   @u   @i   @o   @p   @lbracket  @rbracket  @backslash
   caps    @a  @s   @d   @f   @g   @h   @j   @k   @l   @semicolon  @quote   ret
   lshift  @z  @x   @c   @v   @b   @n   @m   @comma  @dot  @slash         rshift
-  @fn      lctrl  lalt   lmet       spc      rmet   rctrl
+  @fn      lctrl  lalt  @lwr-lmet     @spc-ret     @rse-rmet  ralt  ◀  ▲  ▼  ▶
 )
 
-;; Function layer
 (deflayer fn
   esc     f1  f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
   @grave  @1  @2   @3   @4   @5   @6   @7   @8   @9   @0   @minus  @equal  bspc
   tab     @q  @w   @e   @r   @t   @y   @u   @i   @o   @p   @lbracket  @rbracket  @backslash
   caps    @a  @s   @d   @f   @g   @h   @j   @k   @l   @semicolon  @quote   ret
   lshift  @z  @x   @c   @v   @b   @n   @m   @comma  @dot  @slash         rshift
-  fn      lctrl  lalt   lmet       spc      rmet   rctrl
+  fn      lctrl  lalt   lmet      @spc-ret     rmet   ralt  ◀  ▲  ▼  ▶
+)
+
+(deflayer lower
+  XX      XX  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX      XX
+  XX      XX  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX      XX      bspc
+  esc     XX  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX      XX      XX
+  @grave  @1  @2   @3   @4   @5   @6   @7   @8   @9   @0   @backslash ret
+  lshift  XX  XX   XX   XX   XX   XX   @minus  @equal  @lbracket  @rbracket   rshift
+  fn      lctrl  lalt   @lwr-lmet    @spc-ret    rmet   ralt  ◀  ▲  ▼  ▶
+)
+
+(deflayer raise
+  XX      XX  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX      XX
+  XX      XX  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX      XX      bspc
+  esc     XX  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX      XX      XX
+  caps    XX  XX   XX   XX   XX   ◀    ▼    ▲    ▶    XX   XX      ret
+  lshift  XX  XX   XX   XX   XX   XX   XX   XX   XX   XX        rshift
+  fn      lctrl  lalt   lmet   @spc-ret    @rse-rmet   ralt  ◀  ▲  ▼  ▶
 )
