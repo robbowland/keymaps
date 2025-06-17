@@ -4,7 +4,6 @@
 <dict>
     <key>Label</key>
     <string>com.example.kanata</string>
-
     <key>ProgramArguments</key>
     <array>
         <string>/opt/homebrew/bin/kanata</string>

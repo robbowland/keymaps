@@ -3,13 +3,14 @@
 <plist version="1.0">
 <dict>
     <key>Label</key>
-    <string>com.robbow.karabiner-vhidmanager</string>
+    <string>com.example.karabiner-vhiddaemon</string>
     <key>ProgramArguments</key>
     <array>
-        <string>/Applications/.Karabiner-VirtualHIDDevice-Manager.app/Contents/MacOS/Karabiner-VirtualHIDDevice-Manager</string>
-        <string>activate</string>
+        <string>/Library/Application Support/org.pqrs/Karabiner-DriverKit-VirtualHIDDevice/Applications/Karabiner-VirtualHIDDevice-Daemon.app/Contents/MacOS/Karabiner-VirtualHIDDevice-Daemon</string>
     </array>
     <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
     <true/>
 </dict>
 </plist>
