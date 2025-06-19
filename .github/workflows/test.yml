@@ -117,7 +117,7 @@ jobs:
 
       - name: Set manifest path
         working-directory: ${{ env.base_dir }}
-        run: west config manifest.path "${{ inputs.config_path }}"
+        run: west config manifest.path "${{ env.base_dir }}/${{ inputs.config_path }}"
 
       - name: West Update
         working-directory: ${{ env.base_dir }}
