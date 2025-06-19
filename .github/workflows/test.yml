@@ -124,7 +124,7 @@ jobs:
         run: west zephyr-export
 
       - name: West Build (${{ env.display_name }})
-        working-directory: ${{ env.base_dir }}
+        working-directory: "${{ env.base_dir }}/${{ inputs.config_path }}"
         shell: sh -x {0}
         run: west build -s zmk/app -d "${{ env.build_dir }}" -b "${{ matrix.board }}" ${{ env.extra_west_args }} -- -DZMK_CONFIG=${{ env.base_dir }}/${{ inputs.config_path }} ${{ env.extra_cmake_args }} ${{ matrix.cmake-args }}
 
