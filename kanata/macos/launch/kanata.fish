@@ -35,7 +35,7 @@ end
 
 # Root check
 if test (id -u) -ne 0
-    echo "⚠️ Run as root: sudo $(status current-filename) ..." >&2
+    echo "Run as root: sudo $(status current-filename) ..." >&2
     exit 1
 end
 
@@ -50,9 +50,9 @@ function install_plist
     set dest $argv[1]
     set src $argv[2]
 
-    echo "📄 Installing plist: $(basename $dest)"
+    echo "Installing plist: $(basename $dest)"
     if not test -f $src
-        echo "❌ Source plist not found: $src" >&2
+        echo "Source plist not found: $src" >&2
         exit 1
     end
 
@@ -88,29 +88,29 @@ switch $argv[1]
         install_plist $PL_KANATA $SRC_KANATA
         install_plist $PL_VHIDD $SRC_VHIDD
         install_plist $PL_VHIDM $SRC_VHIDM
-        echo "✅ Plist files installed"
+        echo "Plist files installed"
         exit 0
 
     case enable
         manage_service enable $L_VHIDD $PL_VHIDD
         manage_service enable $L_VHIDM $PL_VHIDM
         manage_service enable $L_KANATA $PL_KANATA
-        echo "✅ All services enabled"
+        echo "All services enabled"
     case disable
         manage_service disable $L_KANATA $PL_KANATA
         manage_service disable $L_VHIDM $PL_VHIDM
         manage_service disable $L_VHIDD $PL_VHIDD
-        echo "⛔ All services disabled"
+        echo "All services disabled"
     case start
         manage_service start $L_VHIDD $PL_VHIDD
         manage_service start $L_VHIDM $PL_VHIDM
         manage_service start $L_KANATA $PL_KANATA
-        echo "🟢 All services started"
+        echo "All services started"
     case stop
         manage_service stop $L_KANATA $PL_KANATA
         manage_service stop $L_VHIDM $PL_VHIDM
         manage_service stop $L_VHIDD $PL_VHIDD
-        echo "🔴 All services stopped"
+        echo "All services stopped"
     case restart
         manage_service stop $L_KANATA $PL_KANATA
         manage_service stop $L_VHIDM $PL_VHIDM
@@ -119,7 +119,7 @@ switch $argv[1]
         manage_service start $L_VHIDD $PL_VHIDD
         manage_service start $L_VHIDM $PL_VHIDM
         manage_service start $L_KANATA $PL_KANATA
-        echo "🔁 All services restarted"
+        echo "All services restarted"
     case status
         echo "=== Status: Kanata ==="
         manage_service status $L_KANATA $PL_KANATA
