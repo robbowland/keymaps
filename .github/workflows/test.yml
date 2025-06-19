@@ -100,11 +100,11 @@ jobs:
           cache_name: cache-zephyr-${{ env.zephyr_version }}-modules
         with:
           path: |
-            ${{ env.base_dir }}/modules/
-            ${{ env.base_dir }}/tools/
-            ${{ env.base_dir }}/zephyr/
-            ${{ env.base_dir }}/bootloader/
-            ${{ env.base_dir }}/zmk/
+            ${{ env.base_dir }}/${{ inputs.config_path }}/modules/
+            ${{ env.base_dir }}/${{ inputs.config_path }}/tools/
+            ${{ env.base_dir }}/${{ inputs.config_path }}/zephyr/
+            ${{ env.base_dir }}/${{ inputs.config_path }}/bootloader/
+            ${{ env.base_dir }}/${{ inputs.config_path }}/zmk/
           key: ${{ runner.os }}-build-${{ env.cache_name }}-${{ hashFiles('**/west.yml', '**/build.yaml') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache_name }}-
