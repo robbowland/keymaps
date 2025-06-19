@@ -104,7 +104,7 @@ jobs:
             ${{ env.base_dir }}/${{ inputs.config_path }}/tools/
             ${{ env.base_dir }}/${{ inputs.config_path }}/zephyr/
             ${{ env.base_dir }}/${{ inputs.config_path }}/bootloader/
-            ${{ env.base_dir }}/${{ inputs.config_path }}/zmk/
+            ${{ env.base_dir }}/${{ inputs.config_path }})/../zmk/
           key: ${{ runner.os }}-build-${{ env.cache_name }}-${{ hashFiles('**/west.yml', '**/build.yaml') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache_name }}-
@@ -124,9 +124,9 @@ jobs:
         run: west zephyr-export
 
       - name: West Build (${{ env.display_name }})
-        working-directory: "${{ env.base_dir }}"
+        working-directory: "${{ env.base_dir }}/${{ inputs.config_path }}"
         shell: sh -x {0}
-        run: west build -s "$(dirname ${{ inputs.config_path }})/zmk/app" -d "${{ env.build_dir }}" -b "${{ matrix.board }}" ${{ env.extra_west_args }} -- -DZMK_CONFIG=${{ env.base_dir }}/${{ inputs.config_path }} ${{ env.extra_cmake_args }} ${{ matrix.cmake-args }}
+        run: west build -s "../zmk/app" -d "${{ env.build_dir }}" -b "${{ matrix.board }}" ${{ env.extra_west_args }} -- -DZMK_CONFIG=${{ env.base_dir }}/${{ inputs.config_path }} ${{ env.extra_cmake_args }} ${{ matrix.cmake-args }}
 
       - name: ${{ env.display_name }} Kconfig file
         run: |
