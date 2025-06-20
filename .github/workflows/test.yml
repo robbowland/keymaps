@@ -82,9 +82,9 @@ jobs:
 
           config_path_parent="$(dirname ${{ inputs.config_path }})"
           if [ ${config_path_parent} = "." ]; then
-            west_workspace_dir="${{ env.base_dir }}"
+            west_workspace_dir="${base_dir}"
           else
-            west_workspace_dir="${{ env.base_dir }}/${config_path_parent}"
+            west_workspace_dir="${base_dir}/${config_path_parent}"
           fi
 
           echo "zephyr_version=${ZEPHYR_VERSION}" >> $GITHUB_ENV
