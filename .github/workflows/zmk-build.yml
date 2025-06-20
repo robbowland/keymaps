@@ -1,8 +1,9 @@
 name: Build ZMK firmware
-on: [push, pull_request, workflow_dispatch]
+on: [workflow_dispatch]
 
 jobs:
   build-macos-crkbd:
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+    uses: robbowland/zmk/.github/workflows/build-user-config.yml@robbow/ci/allow_nested_configs
     with:
       config_path: "zmk/macos/crkbd/config"
+      build_matrix_path: "zmk/macos/crkbd/build.yaml"
