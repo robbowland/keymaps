@@ -81,7 +81,7 @@ jobs:
           fi
 
           config_path_parent="$(dirname ${{ inputs.config_path }})"
-          if [ ${config_path_parent} = "." ]; then
+          if [ "${config_path_parent}" = "${base_dir}" ]; then
             west_workspace_dir="${base_dir}"
           else
             west_workspace_dir="${base_dir}/${config_path_parent}"
