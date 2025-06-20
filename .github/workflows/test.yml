@@ -80,8 +80,16 @@ jobs:
             extra_west_args="-S \"${snippet}\""
           fi
 
+          config_path_parent="$(dirname ${{ inputs.config_path }})"
+          if [ ${config_path_parent} = "." ]; then
+            west_workspace_dir="${{ env.base_dir }}"
+          else
+            west_workspace_dir="${{ env.base_dir }}/${config_path_parent}"
+          fi
+
           echo "zephyr_version=${ZEPHYR_VERSION}" >> $GITHUB_ENV
           echo "extra_west_args=${extra_west_args}" >> $GITHUB_ENV
+          echo "west_workspace_dir=${west_workspace_dir}" >> $GITHUB_ENV
           echo "extra_cmake_args=${shield:+-DSHIELD=\"$shield\"}${zmk_load_arg}" >> $GITHUB_ENV
           echo "display_name=${shield:+$shield - }${board}" >> $GITHUB_ENV
           echo "artifact_name=${artifact_name:-${shield:+$shield-}${board}-zmk}" >> $GITHUB_ENV
@@ -92,16 +100,6 @@ jobs:
             mkdir "${{ env.base_dir }}/${{ inputs.config_path }}"
             cp -R ${{ inputs.config_path }}/* "${{ env.base_dir }}/${{ inputs.config_path }}/"
           fi
-
-      - name: Determine west workspace directory
-        run: |
-          parent_dir="$(dirname ${{ inputs.config_path }})"
-          if [ ${parent_dir} = "." ]; then
-            west_workspace_dir="${{ env.base_dir }}"
-          else
-            west_workspace_dir="${{ env.base_dir }}/${parent_dir}"
-          fi
-          echo "west_workspace_dir=${west_workspace_dir}" >> $GITHUB_ENV
 
       - name: Cache west modules
         uses: actions/cache@v4
@@ -124,17 +122,17 @@ jobs:
       - name: West Init
         working-directory: ${{ env.base_dir }}
         run: west init -l "${{ env.base_dir }}/${{ inputs.config_path }}"
-      
+
       - name: West Update
-        working-directory: "${{ env.west_workspace_dir }}"
+        working-directory: ${{ env.west_workspace_dir }}
         run: west update
 
       - name: West Zephyr export
-        working-directory: "${{ env.west_workspace_dir }}"
+        working-directory: ${{ env.west_workspace_dir }}
         run: west zephyr-export
 
       - name: West Build (${{ env.display_name }})
-        working-directory: "${{ env.west_workspace_dir }}"
+        working-directory: ${{ env.west_workspace_dir }}
         shell: sh -x {0}
         run: west build -s zmk/app -d "${{ env.build_dir }}" -b "${{ matrix.board }}" ${{ env.extra_west_args }} -- -DZMK_CONFIG=${{ env.base_dir }}/${{ inputs.config_path }} ${{ env.extra_cmake_args }} ${{ matrix.cmake-args }}
 
@@ -144,7 +142,7 @@ jobs:
           then
             grep -v -e "^#" -e "^$" "${{ env.build_dir }}/zephyr/.config" | sort
           else
-            echo "No Kconfig output"2
+            echo "No Kconfig output"
           fi
         if: ${{ !cancelled() }}
 
