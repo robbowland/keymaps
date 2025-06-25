@@ -36,12 +36,12 @@
       lower_layer {
         // -----------------------------------------------------------------------------------------
         // |  ESC |  ×  |  ×  |  ×  |  ×  |  ×  |       |  ×  |  ×  |  ×  |  ×  |  ×  | BSPC |
-        // |   ×  |  1  |  2  |  3  |  4  |  5  |       |  6  |  7  |  8  |  9  |  0  |  ×   |
+        // |   `  |  1  |  2  |  3  |  4  |  5  |       |  6  |  7  |  8  |  9  |  0  |  \   |
         // | SHFT |  ×  |  ×  |  ×  |  ×  |  ×  |       |  ×  |  -  |  =  |  [  |  ]  | CTRL |
         //                    | CMD |  ×  | ␣/⏎ |       | ␣/⏎ |  ×  | ALT |
         bindings = <
-          &kp ESC   &none  &none  &none  &none  &none         &none  &none     &none     &none    &none  &kp BSPC
-          &none     AS(N1) AS(N2) AS(N3) AS(N4) AS(N5)        AS(N6) AS(N7)    AS(N8)    AS(N9)   AS(N0) &none
+          &kp ESC   &none  &none  &none  &none  &none         &none  &none     &none     &none    &none    &kp BSPC
+          AS(GRAVE) AS(N1) AS(N2) AS(N3) AS(N4) AS(N5)        AS(N6) AS(N7)    AS(N8)    AS(N9)   AS(N0)   AS(BSLH)
           &kp LSHFT &none  &none  &none  &none  &none         &none  AS(MINUS) AS(EQUAL) AS(LBKT) AS(RBKT) &kp RCTRL
                                  &kp LGUI &none SPC_ENTR    SPC_ENTR  &none  &kp RALT
         >;
