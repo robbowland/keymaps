@@ -51,12 +51,12 @@
       raise_layer {
         // -----------------------------------------------------------------------------------------
         // |  ESC |  ×  |  ×  |  ×  |  ×  |  ×  |       |  ×  |  ×  |  ×  |  ×  |  ×  |  ×   |
-        // |  MEH |  ×  |  ×  |  ×  |  ×  |  ×  |       |  ×  |  ←  |  ↓  |  ↑  |  →  |  ×   |
+        // |  MEH |  ×  |  ×  |  ×  |  ×  |  ×  |       |  ←  |  ↓  |  ↑  |  →  |  ×  |  ×   | 
         // | SHFT |  ×  |  ×  |  ×  |  ×  |  ×  |       |  ×  |  ×  |  ×  |  ×  |  ×  | CTRL |
         //                    | GUI |  ×  | ␣/⏎ |       | ␣/⏎ |  ×  | ALT |
         bindings = <
           &kp ESC   &none  &none  &none  &none  &none         &none  &none    &none    &none  &none     &kp BSPC
-          MEH     &none  &none  &none  &none  &none         &none  &kp LEFT &kp DOWN &kp UP &kp RIGHT &none
+          MEH     &none  &none  &none  &none  &none           &kp LEFT &kp DOWN &kp UP &kp RIGHT &none  &none
           &kp LSHFT &none  &none  &none  &none  &none         &none  &none    &none    &none  &none     &kp RCTRL
                                 &kp LGUI &none  SPC_ENTR   SPC_ENTR  &none  &kp RALT
         >;
