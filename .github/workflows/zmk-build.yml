@@ -7,3 +7,4 @@ jobs:
     with:
       config_path: "zmk/macos/crkbd/config"
       build_matrix_path: "zmk/macos/crkbd/build.yaml"
+      archive_name: firmware-macos-crkbd
