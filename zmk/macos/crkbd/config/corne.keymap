@@ -5,7 +5,7 @@
 // Macros
 #define AS(keycode) &as LS(keycode) keycode  // auto-shift
 #define SPC_ENTR &mt RETURN SPACE            // tap = space, hold = enter
-#define MEH &kp LC(LS(LA(NO)))
+#define MEH &kp LC(LS(LALT))
 
 / {
     behaviors {
