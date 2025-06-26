@@ -2,10 +2,13 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
+// Aliases
+#define LOWER &mo 1
+#define RAISE &mo 2
+#define MEH &kp LC(LS(LALT))
 // Macros
 #define AS(keycode) &as LS(keycode) keycode  // auto-shift
 #define SPC_ENTR &mt RETURN SPACE            // tap = space, hold = enter
-#define MEH &kp LC(LS(LALT))
 
 / {
     behaviors {
@@ -31,7 +34,7 @@
           &kp TAB   AS(Q) AS(W) AS(E) AS(R) AS(T)       AS(Y) AS(U) AS(I)     AS(O)   AS(P)    &kp BSPC
           AS(GRAVE) AS(A) AS(S) AS(D) AS(F) AS(G)       AS(H) AS(J) AS(K)     AS(L)   AS(SEMI) AS(SQT)
           &kp LSHFT AS(Z) AS(X) AS(C) AS(V) AS(B)       AS(N) AS(M) AS(COMMA) AS(DOT) AS(FSLH) &kp RCTRL
-                            &kp LGUI &mo 1 SPC_ENTR    SPC_ENTR  &mo 2 &kp RALT
+                         &kp LGUI  LOWER  SPC_ENTR    SPC_ENTR  RAISE  &kp RALT
         >;
       };
       lower_layer {
