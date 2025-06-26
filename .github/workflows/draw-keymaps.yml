@@ -1,0 +1,13 @@
+name: Draw keymap diagrams
+on:
+  workflow_dispatch:
+
+jobs:
+  draw-macos-zmk-crkbd:
+    uses: caksoylar/keymap-drawer/.github/workflows/draw-zmk.yml@main
+    permissions:
+      contents: write
+    with:
+      keymap_patterns: "zmk/macos/crkbd/config/corne.keymap"
+      output_folder: ".github/img"
+      artifact_name: macos-corne
