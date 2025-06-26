@@ -50,7 +50,6 @@
                                  &kp LGUI &none SPC_ENTR    SPC_ENTR  &none  &kp RALT
         >;
       };
-      // TODO(robbow): Maybe add hyper/meh to this layer
       raise_layer {
         // -----------------------------------------------------------------------------------------
         // |  ESC |  ×  |  ×  |  ×  |  ×  |  ×  |       |  ×  |  ×  |  ×  |  ×  |  ×  |  ×   |
