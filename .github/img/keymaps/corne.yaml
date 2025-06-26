@@ -81,10 +81,10 @@ layers:
   - {t: ']', h: 'Sft+]'}
   - RCTRL
   - LGUI
-  - {type: held}
+  - {t: lower, type: held}
   - {t: SPACE, h: RETURN}
   - {t: SPACE, h: RETURN}
-  - {t: ▽, type: trans}
+  - raise
   - RALT
   raise:
   - ESC
@@ -124,12 +124,12 @@ layers:
   - ''
   - RCTRL
   - LGUI
-  - {t: ▽, type: trans}
+  - lower
   - {t: SPACE, h: RETURN}
   - {t: SPACE, h: RETURN}
-  - {type: held}
+  - {t: raise, type: held}
   - RALT
-  control:
+  adjust:
   - ''
   - ''
   - ''
@@ -167,8 +167,8 @@ layers:
   - ''
   - ''
   - ''
-  - {t: ▽, type: trans}
+  - lower
   - ''
   - ''
-  - {t: ▽, type: trans}
+  - raise
   - ''
