@@ -28,9 +28,9 @@
     };
     conditional_layers {
       compatible = "zmk,behavior-layer-conditions";
-      control_layer: control_layer {
+      activate_adjust_layer {
         if-layers = <1 2>; // lower + raise
-        then-layer = <3>;  // control
+        then-layer = <3>;  // adjust
       };
     };
 
@@ -59,7 +59,7 @@
           &kp ESC   &none  &none  &none  &none  &none         &none  &none     &none     &none    &none    &kp BSPC
           AS(GRAVE) AS(N1) AS(N2) AS(N3) AS(N4) AS(N5)        AS(N6) AS(N7)    AS(N8)    AS(N9)   AS(N0)   AS(BSLH)
           &kp LSHFT &none  &none  &none  &none  &none         &none  AS(MINUS) AS(EQUAL) AS(LBKT) AS(RBKT) &kp RCTRL
-                              &kp LGUI &trans SPC_ENTR    SPC_ENTR  &trans  &kp RALT
+                              &kp LGUI LOWER SPC_ENTR    SPC_ENTR  RAISE &kp RALT
         >;
       };
       raise_layer {
@@ -72,10 +72,10 @@
           &kp ESC    &none  &none  &none  &none  &none         &none     &none     &none   &none      &none  &none
           MEH        &none  &none  &none  &none  &none         &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT  &none  &none
           &kp LSHFT  &none  &none  &none  &none  &none         &none     &none     &none   &none      &none  &kp RCTRL
-                              &kp LGUI  &trans  SPC_ENTR   SPC_ENTR  &trans  &kp RALT
+                              &kp LGUI LOWER SPC_ENTR   SPC_ENTR  RAISE  &kp RALT
         >;
       };
-      control_layer {
+      adjust_layer {
         // -----------------------------------------------------------------------------------------
         // |   ×  |  ×  |  ×  |  ×  |  ×  |  ×  |       |  ×  |  ×  |  ×  |  ×  |  ×  | BTCLR |
         // |   ×  | BT1 | BT2 | BT3 | BT4 | BT5 |       |  ×  |  ×  |  ×  |  ×  |  ×  |   ×   |
@@ -85,7 +85,7 @@
            &none  &none  &none  &none  &none  &none         &none  &none  &none  &none  &none  &bt BT_CLR
            &none  BT_1   BT_2   BT_3   BT_4   BT_5          &none  &none  &none  &none  &none  &none
            &none  &none  &none  &none  &none  &none         &none  &none  &none  &none  &none  &none
-                                  &none  &trans  &none   &none  &trans  &none
+                                  &none LOWER  &none   &none  RAISE  &none
         >;
       };
     };
