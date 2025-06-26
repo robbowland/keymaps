@@ -6,6 +6,11 @@
 #define LOWER &mo 1
 #define RAISE &mo 2
 #define MEH &kp LC(LS(LALT))
+#define BT_1 &bt BT_SEL 0
+#define BT_2 &bt BT_SEL 1
+#define BT_3 &bt BT_SEL 2
+#define BT_4 &bt BT_SEL 3
+#define BT_5 &bt BT_SEL 4
 // Macros
 #define AS(keycode) &as LS(keycode) keycode  // auto-shift
 #define SPC_ENTR &mt RETURN SPACE            // tap = space, hold = enter
@@ -19,6 +24,13 @@
         quick_tap_ms = <0>;
         flavor = "tap-preferred";
         bindings = <&kp>, <&kp>;
+      };
+    };
+    conditional_layers {
+      compatible = "zmk,behavior-layer-conditions";
+      control_layer: control_layer {
+        if-layers = <1 2>; // lower + raise
+        then-layer = <3>;  // control
       };
     };
 
@@ -42,12 +54,12 @@
         // |  ESC |  ×  |  ×  |  ×  |  ×  |  ×  |       |  ×  |  ×  |  ×  |  ×  |  ×  | BSPC |
         // |   `  |  1  |  2  |  3  |  4  |  5  |       |  6  |  7  |  8  |  9  |  0  |  \   |
         // | SHFT |  ×  |  ×  |  ×  |  ×  |  ×  |       |  ×  |  -  |  =  |  [  |  ]  | CTRL |
-        //                    | CMD |  ×  | ␣/⏎ |       | ␣/⏎ |  ×  | ALT |
+        //                    | CMD |     | ␣/⏎ |       | ␣/⏎ |     | ALT |
         bindings = <
           &kp ESC   &none  &none  &none  &none  &none         &none  &none     &none     &none    &none    &kp BSPC
           AS(GRAVE) AS(N1) AS(N2) AS(N3) AS(N4) AS(N5)        AS(N6) AS(N7)    AS(N8)    AS(N9)   AS(N0)   AS(BSLH)
           &kp LSHFT &none  &none  &none  &none  &none         &none  AS(MINUS) AS(EQUAL) AS(LBKT) AS(RBKT) &kp RCTRL
-                                 &kp LGUI &none SPC_ENTR    SPC_ENTR  &none  &kp RALT
+                              &kp LGUI &trans SPC_ENTR    SPC_ENTR  &trans  &kp RALT
         >;
       };
       raise_layer {
@@ -55,12 +67,25 @@
         // |  ESC |  ×  |  ×  |  ×  |  ×  |  ×  |       |  ×  |  ×  |  ×  |  ×  |  ×  |  ×   |
         // |  MEH |  ×  |  ×  |  ×  |  ×  |  ×  |       |  ←  |  ↓  |  ↑  |  →  |  ×  |  ×   | 
         // | SHFT |  ×  |  ×  |  ×  |  ×  |  ×  |       |  ×  |  ×  |  ×  |  ×  |  ×  | CTRL |
-        //                    | GUI |  ×  | ␣/⏎ |       | ␣/⏎ |  ×  | ALT |
+        //                    | GUI |     | ␣/⏎ |       | ␣/⏎ |     | ALT |
         bindings = <
-          &kp ESC    &none  &none  &none  &none  &none         &none     &none     &none   &none      &none  &kp BSPC
+          &kp ESC    &none  &none  &none  &none  &none         &none     &none     &none   &none      &none  &none
           MEH        &none  &none  &none  &none  &none         &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT  &none  &none
           &kp LSHFT  &none  &none  &none  &none  &none         &none     &none     &none   &none      &none  &kp RCTRL
-                                &kp LGUI  &none  SPC_ENTR   SPC_ENTR  &none  &kp RALT
+                              &kp LGUI  &trans  SPC_ENTR   SPC_ENTR  &trans  &kp RALT
+        >;
+      };
+      control_layer {
+        // -----------------------------------------------------------------------------------------
+        // |   ×  |  ×  |  ×  |  ×  |  ×  |  ×  |       |  ×  |  ×  |  ×  |  ×  |  ×  | BTCLR |
+        // |   ×  | BT1 | BT2 | BT3 | BT4 | BT5 |       |  ×  |  ×  |  ×  |  ×  |  ×  |   ×   |
+        // |   ×  |  ×  |  ×  |  ×  |  ×  |  ×  |       |  ×  |  ×  |  ×  |  ×  |  ×  |   ×   |
+        //                    |  ×  |     |  ×  |       |  ×  |     |  ×  |
+        bindings = <
+           &none  &none  &none  &none  &none  &none         &none  &none  &none  &none  &none  &bt BT_CLR
+           &none  BT_1   BT_2   BT_3   BT_4   BT_5          &none  &none  &none  &none  &none  &none
+           &none  &none  &none  &none  &none  &none         &none  &none  &none  &none  &none  &none
+                                  &none  &trans  &none   &none  &trans  &none
         >;
       };
     };
