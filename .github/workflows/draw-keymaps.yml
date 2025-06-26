@@ -8,7 +8,9 @@ jobs:
     permissions:
       contents: write
     with:
+      config_path: ".github/keymap-drawer.config.yaml"
       keymap_patterns: "zmk/macos/crkbd/config/corne.keymap"
       west_config_path: ""
       output_folder: ".github/img"
       artifact_name: macos-corne
+      commit_message: 'Update `macos-corne` keymap render'
