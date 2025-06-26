@@ -21,7 +21,7 @@
 
     keymap {
       compatible = "zmk,keymap";
-      default_layer {
+      base_layer {
         // -----------------------------------------------------------------------------------------
         // |  TAB |  Q  |  W  |  E  |  R  |  T  |       |  Y  |  U   |  I  |  O  |  P  | BSPC |
         // |   `  |  A  |  S  |  D  |  F  |  G  |       |  H  |  J   |  K  |  L  |  ;  |  '   |
