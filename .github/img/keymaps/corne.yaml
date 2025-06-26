@@ -167,8 +167,8 @@ layers:
   - ''
   - ''
   - ''
-  - lower
+  - {t: lower, type: held}
   - ''
   - ''
-  - raise
+  - {t: raise, type: held}
   - ''
