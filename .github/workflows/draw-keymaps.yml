@@ -1,7 +1,6 @@
 name: Draw keymap diagrams
 on:
   workflow_dispatch:
-<<<<<<< robbow/ci/keymap-drawer
 
 jobs:
   draw-macos-zmk-crkbd:
@@ -15,5 +14,3 @@ jobs:
       output_folder: ".github/img/keymaps"
       artifact_name: macos-corne
       commit_message: 'Update `macos-corne` keymap render'
-=======
->>>>>>> main
