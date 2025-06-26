@@ -1,1 +1,3 @@
-
+name: Draw keymap diagrams
+on:
+  workflow_dispatch:
