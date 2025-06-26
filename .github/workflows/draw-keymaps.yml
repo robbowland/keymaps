@@ -9,6 +9,6 @@ jobs:
       contents: write
     with:
       keymap_patterns: "zmk/macos/crkbd/config/corne.keymap"
-      west_config_path: "zmk/macos/crkbd"
+      west_config_path: ""
       output_folder: ".github/img"
       artifact_name: macos-corne
