@@ -27,7 +27,7 @@
       };
     };
     conditional_layers {
-      compatible = "zmk,behavior-layer-conditions";
+      compatible = "zmk,conditional-layers";
       activate_adjust_layer {
         if-layers = <1 2>; // lower + raise
         then-layer = <3>;  // adjust
