@@ -25,9 +25,6 @@ function usage
     echo "  init      Copy .plist files to /Library/LaunchDaemons (overwrites existing)"
     echo "  enable    Load and configure services to start at boot"
     echo "  disable   Unload and prevent services from starting at boot"
-    echo "  start     Start services immediately"
-    echo "  stop      Stop running services"
-    echo "  restart   Restart all services"
     echo "  status    Show current service status"
     echo ""
     exit 1
@@ -73,10 +70,6 @@ function manage_service
             launchctl bootstrap system $plist
         case disable
             launchctl bootout system $plist
-        case start
-            launchctl start $label
-        case stop
-            launchctl stop $label
         case status
             launchctl print system/$label
     end
@@ -90,7 +83,6 @@ switch $argv[1]
         install_plist $PL_VHIDM $SRC_VHIDM
         echo "Plist files installed"
         exit 0
-
     case enable
         manage_service enable $L_VHIDD $PL_VHIDD
         manage_service enable $L_VHIDM $PL_VHIDM
@@ -101,25 +93,6 @@ switch $argv[1]
         manage_service disable $L_VHIDM $PL_VHIDM
         manage_service disable $L_VHIDD $PL_VHIDD
         echo "All services disabled"
-    case start
-        manage_service start $L_VHIDD $PL_VHIDD
-        manage_service start $L_VHIDM $PL_VHIDM
-        manage_service start $L_KANATA $PL_KANATA
-        echo "All services started"
-    case stop
-        manage_service stop $L_KANATA $PL_KANATA
-        manage_service stop $L_VHIDM $PL_VHIDM
-        manage_service stop $L_VHIDD $PL_VHIDD
-        echo "All services stopped"
-    case restart
-        manage_service stop $L_KANATA $PL_KANATA
-        manage_service stop $L_VHIDM $PL_VHIDM
-        manage_service stop $L_VHIDD $PL_VHIDD
-        sleep 1
-        manage_service start $L_VHIDD $PL_VHIDD
-        manage_service start $L_VHIDM $PL_VHIDM
-        manage_service start $L_KANATA $PL_KANATA
-        echo "All services restarted"
     case status
         echo "=== Status: Kanata ==="
         manage_service status $L_KANATA $PL_KANATA
