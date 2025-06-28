@@ -51,14 +51,14 @@
       };
       lower_layer {
         // -----------------------------------------------------------------------------------------
-        // |  ESC |  ×  |  ×  |  ×  |  ×  |  ×  |       |  ×  |  ×  |  ×  |  ×  |  ×  | BSPC |
-        // |   `  |  1  |  2  |  3  |  4  |  5  |       |  6  |  7  |  8  |  9  |  0  |  \   |
-        // | SHFT |  ×  |  ×  |  ×  |  ×  |  ×  |       |  ×  |  -  |  =  |  [  |  ]  | CTRL |
+        // |  ESC | F1  | F2  | F3  | F4  | F5  |       | F6  | F7  | F8  | F9/11 | F10/12  | BSPC |
+        // |   `  |  1  |  2  |  3  |  4  |  5  |       |  6  |  7  |  8  |  9    |  0      |  \   |
+        // | SHFT |  ×  |  ×  |  ×  |  ×  |  ×  |       |  ×  |  -  |  =  |  [    |  ]      | CTRL |
         //                    | CMD |     | ␣/⏎ |       | ␣/⏎ |     | ALT |
         bindings = <
-          &kp ESC   &none  &none  &none  &none  &none         &none  &none     &none     &none    &none    &kp BSPC
-          AS(GRAVE) AS(N1) AS(N2) AS(N3) AS(N4) AS(N5)        AS(N6) AS(N7)    AS(N8)    AS(N9)   AS(N0)   AS(BSLH)
-          &kp LSHFT &none  &none  &none  &none  &none         &none  AS(MINUS) AS(EQUAL) AS(LBKT) AS(RBKT) &kp RCTRL
+          &kp ESC   &kp F1 &kp F2 &kp F3 &kp F4 &kp F5        &kp F6 &kp F7    &kp F8    &mt F9 F11 &mt F10 F12 &kp BSPC
+          AS(GRAVE) AS(N1) AS(N2) AS(N3) AS(N4) AS(N5)        AS(N6) AS(N7)    AS(N8)    AS(N9)     AS(N0)      AS(BSLH)
+          &kp LSHFT &none  &none  &none  &none  &none         &none  AS(MINUS) AS(EQUAL) AS(LBKT)   AS(RBKT)    &kp RCTRL
                               &kp LGUI LOWER SPC_ENTR    SPC_ENTR  RAISE &kp RALT
         >;
       };
