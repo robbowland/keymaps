@@ -53,8 +53,8 @@ layers:
   - F6
   - F7
   - F8
-  - {t: F11, h: F9}
-  - {t: F12, h: F10}
+  - {t: F9, h: F11}
+  - {t: F10, h: F12}
   - BSPC
   - {t: '`', h: Sft+`}
   - {t: '1', h: Sft+1}
