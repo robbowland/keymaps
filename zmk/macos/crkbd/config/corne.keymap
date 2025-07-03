@@ -71,7 +71,7 @@
         bindings = <
           &kp ESC    &none  &none  &none  &none  &none         &none     &none     &none   &none      &none  &none
           MEH        &none  &none  &none  &none  &none         &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT  &none  &none
-          &kp RCTRL  &none  &none  &none  &none  &none         &none     &none     &none   &none      &none  &kp LSHFT
+          &kp LCTRL  &none  &none  &none  &none  &none         &none     &none     &none   &none      &none  &kp RSHFT
                               &kp LGUI LOWER SPC_ENTR   SPC_ENTR  RAISE  &kp RALT
         >;
       };
