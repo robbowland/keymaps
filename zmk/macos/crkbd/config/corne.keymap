@@ -40,12 +40,12 @@
         // -----------------------------------------------------------------------------------------
         // |  TAB |  Q  |  W  |  E  |  R  |  T  |       |  Y  |  U   |  I  |  O  |  P  | BSPC |
         // |   `  |  A  |  S  |  D  |  F  |  G  |       |  H  |  J   |  K  |  L  |  ;  |  '   |
-        // | SHFT |  Z  |  X  |  C  |  V  |  B  |       |  N  |  M   |  ,  |  .  |  /  | CTRL |
+        // | CTRL |  Z  |  X  |  C  |  V  |  B  |       |  N  |  M   |  ,  |  .  |  /  | SHFT |
         //                    | CMD | LWR | ␣/⏎ |       | ␣/⏎ | RSE  | ALT |
         bindings = <
           &kp TAB   AS(Q) AS(W) AS(E) AS(R) AS(T)       AS(Y) AS(U) AS(I)     AS(O)   AS(P)    &kp BSPC
           AS(GRAVE) AS(A) AS(S) AS(D) AS(F) AS(G)       AS(H) AS(J) AS(K)     AS(L)   AS(SEMI) AS(SQT)
-          &kp LSHFT AS(Z) AS(X) AS(C) AS(V) AS(B)       AS(N) AS(M) AS(COMMA) AS(DOT) AS(FSLH) &kp RCTRL
+          &kp LCTRL AS(Z) AS(X) AS(C) AS(V) AS(B)       AS(N) AS(M) AS(COMMA) AS(DOT) AS(FSLH) &kp RSHFT
                          &kp LGUI  LOWER  SPC_ENTR    SPC_ENTR  RAISE  &kp RALT
         >;
       };
@@ -53,12 +53,12 @@
         // -----------------------------------------------------------------------------------------
         // |  ESC | F1  | F2  | F3  | F4  | F5  |       | F6  | F7  | F8  | F9/11 | F10/12  | BSPC |
         // |   `  |  1  |  2  |  3  |  4  |  5  |       |  6  |  7  |  8  |  9    |  0      |  \   |
-        // | SHFT |  ×  |  ×  |  ×  |  ×  |  ×  |       |  ×  |  -  |  =  |  [    |  ]      | CTRL |
+        // | CTRL |  ×  |  ×  |  ×  |  ×  |  ×  |       |  ×  |  -  |  =  |  [    |  ]      | SHFT |
         //                    | CMD |     | ␣/⏎ |       | ␣/⏎ |     | ALT |
         bindings = <
           &kp ESC   &kp F1 &kp F2 &kp F3 &kp F4 &kp F5        &kp F6 &kp F7    &kp F8    &mt F11 F9 &mt F12 F10 &kp BSPC
           AS(GRAVE) AS(N1) AS(N2) AS(N3) AS(N4) AS(N5)        AS(N6) AS(N7)    AS(N8)    AS(N9)     AS(N0)      AS(BSLH)
-          &kp LSHFT &none  &none  &none  &none  &none         &none  AS(MINUS) AS(EQUAL) AS(LBKT)   AS(RBKT)    &kp RCTRL
+          &kp LCTRL &none  &none  &none  &none  &none         &none  AS(MINUS) AS(EQUAL) AS(LBKT)   AS(RBKT)    &kp RSHFT
                               &kp LGUI LOWER SPC_ENTR    SPC_ENTR  RAISE &kp RALT
         >;
       };
@@ -66,12 +66,12 @@
         // -----------------------------------------------------------------------------------------
         // |  ESC |  ×  |  ×  |  ×  |  ×  |  ×  |       |  ×  |  ×  |  ×  |  ×  |  ×  |  ×   |
         // |  MEH |  ×  |  ×  |  ×  |  ×  |  ×  |       |  ←  |  ↓  |  ↑  |  →  |  ×  |  ×   | 
-        // | SHFT |  ×  |  ×  |  ×  |  ×  |  ×  |       |  ×  |  ×  |  ×  |  ×  |  ×  | CTRL |
+        // | CTRL |  ×  |  ×  |  ×  |  ×  |  ×  |       |  ×  |  ×  |  ×  |  ×  |  ×  | SHFT |
         //                    | GUI |     | ␣/⏎ |       | ␣/⏎ |     | ALT |
         bindings = <
           &kp ESC    &none  &none  &none  &none  &none         &none     &none     &none   &none      &none  &none
           MEH        &none  &none  &none  &none  &none         &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT  &none  &none
-          &kp LSHFT  &none  &none  &none  &none  &none         &none     &none     &none   &none      &none  &kp RCTRL
+          &kp RCTRL  &none  &none  &none  &none  &none         &none     &none     &none   &none      &none  &kp LSHFT
                               &kp LGUI LOWER SPC_ENTR   SPC_ENTR  RAISE  &kp RALT
         >;
       };
