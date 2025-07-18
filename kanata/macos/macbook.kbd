@@ -100,13 +100,14 @@
   rse-rmet (tap-dance 200 (@raise rmet))
   ;; tap for space, hold for return
   spc-ret (tap-hold 0 $hold-timeout spc ret)
+  meh (multi ctl alt sft)
 )
 
 (deflayer base
   esc     🔅   🔆  mctl sls  dtn  dnd  ◀◀   ▶⏸   ▶▶   🔇   🔉   🔊
   @grave  @1  @2   @3   @4   @5   @6   @7   @8   @9   @0   @minus  @equal  bspc
   tab     @q  @w   @e   @r   @t   @y   @u   @i   @o   @p   @lbracket  @rbracket  @backslash
-  caps    @a  @s   @d   @f   @g   @h   @j   @k   @l   @semicolon  @quote   ret
+  @meh    @a  @s   @d   @f   @g   @h   @j   @k   @l   @semicolon  @quote   ret
   lshift  @z  @x   @c   @v   @b   @n   @m   @comma  @dot  @slash         rshift
   @fn      lctrl  lalt  @lwr-lmet     @spc-ret     @rse-rmet  ralt  ◀  ▲  ▼  ▶
 )
@@ -115,7 +116,7 @@
   esc     f1  f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
   @grave  @1  @2   @3   @4   @5   @6   @7   @8   @9   @0   @minus  @equal  bspc
   tab     @q  @w   @e   @r   @t   @y   @u   @i   @o   @p   @lbracket  @rbracket  @backslash
-  caps    @a  @s   @d   @f   @g   @h   @j   @k   @l   @semicolon  @quote   ret
+  @meh    @a  @s   @d   @f   @g   @h   @j   @k   @l   @semicolon  @quote   ret
   lshift  @z  @x   @c   @v   @b   @n   @m   @comma  @dot  @slash         rshift
   fn      lctrl  lalt   lmet      @spc-ret     rmet   ralt  ◀  ▲  ▼  ▶
 )
@@ -133,7 +134,7 @@
   XX      XX  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX      XX
   XX      XX  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX      XX      bspc
   esc     XX  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX      XX      XX
-  caps    XX  XX   XX   XX   XX   ◀    ▼    ▲    ▶    XX   XX      ret
+  @meh    XX  XX   XX   XX   XX   ◀    ▼    ▲    ▶    XX   XX      ret
   lshift  XX  XX   XX   XX   XX   XX   XX   XX   XX   XX        rshift
   fn      lctrl  lalt   lmet   @spc-ret    @rse-rmet   ralt  ◀  ▲  ▼  ▶
 )
