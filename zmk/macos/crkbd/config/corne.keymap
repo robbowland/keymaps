@@ -13,7 +13,7 @@
 #define BT_5 &bt BT_SEL 4
 // Macros
 #define AS(keycode) &as LS(keycode) keycode  // auto-shift
-#define SPC_ENTR &mt RETURN SPACE            // tap = space, hold = enter
+#define SPC_ENTR &tm RETURN SPACE            // tap = space, hold = enter
 
 / {
     behaviors {
@@ -23,6 +23,14 @@
         tapping_term_ms = <200>;
         quick_tap_ms = <0>;
         flavor = "tap-preferred";
+        bindings = <&kp>, <&kp>;
+      };
+      // mod_tap (&mt) but tap-preferred
+      tm: tap_mod {
+        compatible = "zmk,behavior-hold-tap";
+        #binding-cells = <2>;
+        flavor = "tap-preferred";
+        tapping-term-ms = <200>;
         bindings = <&kp>, <&kp>;
       };
     };
