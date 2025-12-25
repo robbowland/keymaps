@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-<img src="https://github.com/robbowland/keymaps/blob/main/.github/img/heading.png?raw=true" alt="keymaps" width="600"></a>
+<img src=".assets/readme/heading.png" alt="keymaps" width="600"></a>
   <br>
 </h1>
 
@@ -18,7 +18,7 @@
 <details>
 	<summary>keymap</summary>
 	<div align="center">
-  		<img src="https://github.com/robbowland/keymaps/blob/main/.github/img/keymaps/corne.svg?raw=true" alt="corne-keymaps=" width="900"></a>
+  		<img src=".assets/readme/keymaps/corne.svg" alt="corne-keymaps=" width="900"></a>
 	</div>
 </details>
 
